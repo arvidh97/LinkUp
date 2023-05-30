@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get 'api/test', to: 'application#test'
+  namespace :api, defaults: {format: :json} do
+    resources :users, only: [:create]
+    resource :session, only: [:create, :show, :destroy]
+end
+
 end
