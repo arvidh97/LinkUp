@@ -15,12 +15,19 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-    validates :email, :session_token, presence: true, uniqueness: true
-    validates :password, length: { minimum: 6 }, allow_nil: true
-
-    before_validation :ensure_session_token
+    
     has_secure_password
-
+   
+    validates :email, presence: true, uniqueness: {message: "'%{value}' is already taken"}
+    validates :fname, presence: {message: "Please enter first name"}
+    validates :lname, presence: {message: "Please enter last name"}
+    validates :session_token, presence: true, uniqueness: true 
+    validates :password_digest, presence: true
+    validates :password, length: { minimum: 6, message: "this is too short" }, allow_nil: true
+   
+    
+    before_validation :ensure_session_token 
+    
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
       
@@ -30,15 +37,6 @@ class User < ApplicationRecord
             nil 
         end
     end
-
-    # def is_password?(password)
-    #     BCrypt::Password.new(password_digest).is_password?(password)
-    #   end
-    
-    #   def password=(password)
-    #     @password = password
-    #     self.password_digest = BCrypt::Password.create(password)
-    #   end
 
     def ensure_session_token
         self.session_token ||= generate_unique_session_token
