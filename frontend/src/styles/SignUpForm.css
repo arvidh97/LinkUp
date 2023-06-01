@@ -1,0 +1,107 @@
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #edebeb;
+}
+
+.main-logo-container {
+    position: relative;
+    right: 500px;
+}
+.signup-logo {
+    width: 200px;
+    height: 50px;
+}
+
+.main-title {
+    padding: 24px 16px;
+    font-size: 32px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+.signup-form {
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 25%;
+    /* padding: 24px; */
+}
+
+.signup-form-content {
+    display:flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.error-list {
+    margin-bottom: 5px;
+    color: red;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signup-input {
+    margin-bottom: 1px;
+    align-items: center;
+  }
+  
+  .signup-input-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+  }
+  
+  .signup-input-field {
+    padding: 4px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    width: 95%;
+    border-radius: 4px;
+    margin-top: 5px;
+    cursor:text;
+  }
+
+  .submit-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin: 5px;
+    font-weight: 20;
+    background-color: #0a66c2;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .agree-mes {
+    margin-top: 4px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+
+  }
+
+  .cool-text {
+    color: #0a66c2;
+  }
+
+  .signin-mes {
+    padding: 16px 16px 24px;
+    font: 16px;
+    text-align: center;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+
+  .signin-link {
+    text-decoration: none;
+    color: #0a66c2;
+  }
+
+  .signin-link:hover {
+    text-decoration: underline;
+  }
