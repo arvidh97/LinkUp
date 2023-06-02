@@ -10,7 +10,7 @@ import logo from '../assests/LinkUpLogo.png';
 import github from '../assests/githublogo.png';
 import linkedin from '../assests/linkedInlogo.png'
 
-function LoginFormPage() {
+function LoginForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
@@ -65,7 +65,7 @@ function LoginFormPage() {
     };
   }, []);
   
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/feed" />;
   return (
     <div className="login-page">
       <div className='splash-nav'>
@@ -95,11 +95,6 @@ function LoginFormPage() {
         <div className="form-content">
           <h1 className="login-header">Welcome to your future, now!</h1>
           <form className="login-form" onSubmit={handleSubmit}>
-          {/* <ul className="error-list">
-             {errors.map((error) => (
-                <li key={error}>{error}</li>
-              ))}
-            </ul> */}
             <div className="input-container">
               <label className="input-label">
                 Email
@@ -148,4 +143,4 @@ function LoginFormPage() {
   );
 }
 
-export default LoginFormPage;
+export default LoginForm;

@@ -37,14 +37,6 @@ function SignUpFormPage() {
     .then(() => {
         history.push('/feed');
       })
-    //   .catch((res) => {
-    //     if (res.data && res.data.errors) {
-    //       setErrors(res.data.errors);
-    //     } else {
-    //       console.error('Sign up failed:', res);
-    //       setErrors(['An error occurred. Please try again.']);
-    //     }
-    //   });
     .catch(async (res) => {
         let data;
         try {
