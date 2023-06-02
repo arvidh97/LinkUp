@@ -1,0 +1,169 @@
+.log-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #ffffff;
+}
+
+.log-main-logo-container {
+    position: relative;
+    right: 32%;
+    margin-bottom: 30px;
+   
+}
+
+.log-signup-logo {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.log-header {
+    font-size: 32px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif ;
+    padding: 0, 0, 4px, 0;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.log-subheader {
+    font-size: 14px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.log-form {
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: solid, transparent;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    padding: 24px;
+}
+
+.login-log-form {
+    display:flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.log-input-container {
+    margin-bottom: 1px;
+    align-items: center;
+    padding: 4px;
+}
+
+.log-input-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif 
+}
+
+.log-input-field {
+    padding: 4px;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    width: 95%;
+    border-radius: 4px;
+    margin-top: 5px;
+    cursor:text;
+}
+
+.log-the-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.log-login-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin: 5px;
+    font-weight: 20;
+    background-color: #0a66c2;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.log-login-button:hover {
+    font-weight: bold;
+    color: #dddbdb;
+    background-color: #054686;
+}
+
+.log-demo-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin: 5px;
+    font-weight: 20;
+    background-color: #0a66c2;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.log-demo-button:hover {
+    font-weight: bold;
+    color: #dddbdb;
+    background-color: #054686;
+}
+
+  .log-or-container {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    padding: 4px;
+  }
+  
+  .log-or-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+  }
+  
+  .log-or-text {
+    margin: 0 12px;
+    color: #ccc;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .log-signup-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ffffff;
+    color: #0b0a0a;
+    border: none ;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+    margin-left: 12px;
+  }
+
+
+  .log-signup-link {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: #2c57ce;
+  }
+
+  .log-signup-link:hover {
+    background-color: #b7bdf7;
+    border: solid ;
+    border-radius: 20px;
+    padding: 5px 10px;
+    text-decoration: underline;
+  }
