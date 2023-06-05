@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Redirect, Link } from 'react-router-dom';
 import NavBar from './NavBar';
+import PostForm from './PostForm'
+import PostIndex from './PostIndex'
 
 function Feed() {
     const dispatch = useDispatch();
@@ -17,6 +19,8 @@ function Feed() {
     return (
         <>
         <NavBar />
+        <PostForm />
+        <PostIndex />
         {/* <button onClick={handleLogout}>Logout</button> */}
         </>
         

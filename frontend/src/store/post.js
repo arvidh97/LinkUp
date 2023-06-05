@@ -24,18 +24,26 @@ export const removePost = (postId) => {
 };
 
 export const createPost = (post) => async (dispatch) => {
-    const payload = { post: post }
     const res = await csrfFetch('/api/posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(post)
     });
     if (res.ok) {
         const data = await res.json();
         const post = data.post;
         dispatch(receivePost(post))
+    }
+};
+
+export const fetchPosts = () => async (dispatch) => {
+    const res = await csrfFetch('/api/posts');
+    if (res.ok) {
+        const data = await res.json();
+        // const posts = data.posts;
+        dispatch(receivePosts(data));
     }
 };
 
@@ -46,6 +54,21 @@ export const deletePost = (postId) => async (dispatch) => {
 
     if (response.ok) {
         dispatch(removePost(postId))
+    }
+};
+
+export const updatePost = (post) => async (dispatch) => {
+    const response = await csrfFetch(`/api/posts/${post.id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(post)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        const post = data.post;
+        dispatch(receivePost(post))
     }
 };
 
