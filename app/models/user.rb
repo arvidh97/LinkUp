@@ -25,9 +25,15 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: { minimum: 6, message: "this is too short" }, allow_nil: true
    
+    has_one_attached :photo
     
     before_validation :ensure_session_token 
     
+    has_many :posts,
+        foreign_key: :author_id,
+        class_name: :Post,
+        dependent: :destroy
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
       

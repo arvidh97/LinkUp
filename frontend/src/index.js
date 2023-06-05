@@ -9,6 +9,7 @@ import { restoreSession } from './store/csrf';
 import { createUser, loginUser, logoutUser } from './store/userReducer'; 
 import { csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
+import * as postActions from './store/post'
 
 const store = configureStore();
 
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.loginUser = loginUser
   window.logoutUser = logoutUser
   window.sessionActions = sessionActions
+  window.postActions = postActions
 }
 
 const initializeApp = () => {

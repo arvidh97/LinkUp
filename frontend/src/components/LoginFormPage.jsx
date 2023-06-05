@@ -47,7 +47,7 @@ function LoginFormPage() {
     return dispatch(sessionActions.login(demoUser));
   }
   
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/feed" />;
   return (
     <div className='log-container'>
         <div className='log-main-logo-container'>
