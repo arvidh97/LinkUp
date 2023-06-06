@@ -117,6 +117,8 @@ const CreatePostForm = () => {
         onClick={openModal}
         placeholder="Start a post"
         required
+        className="post-form-textarea"
+        readOnly
       />
       <Modal
         isOpen={modalIsOpen}

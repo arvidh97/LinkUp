@@ -1,4 +1,5 @@
 import blankpropic from '../assests/blankProfilePic.png'
+import '../styles/PostItem.css'
 
 const PostItem = ({ post }) => {
     const { fName, lName } = post.author;
@@ -31,17 +32,22 @@ function formatTimeAgo(time) {
     return Math.floor(time / (60 * 60 * 24)) + "d";
   }
 }
-
 // Format the time difference
 const timeAgo = formatTimeAgo(seconds);
-    return (
-        <>
-        <img src={post.author.photoUrl ? post.author.photoUrl : blankpropic} />
-        <h2>{capitalizedFName} {capitalizedLName}</h2>
+    
+return (
+    <>
+    <div className='post-container'> 
+        <div className='post-user-info'>
+            <img src={post.author.photoUrl ? post.author.photoUrl : blankpropic} className='post-user-pic'/>
+            <h2>{capitalizedFName} {capitalizedLName}</h2>
+            <h4>{timeAgo}</h4>
+        </div>
         <h3>{post.body}</h3>
-        <h4>{timeAgo}</h4>
-        </>
-    );
+    </div>
+    </>
+);
+
 };
 
 export default PostItem;

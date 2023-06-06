@@ -33,6 +33,7 @@ export const createPost = (post) => async (dispatch) => {
     });
     if (res.ok) {
         const data = await res.json();
+        console.log(data)
         // const post = data.post;
         dispatch(receivePost(data))
     }
@@ -77,13 +78,17 @@ const postsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_POSTS:
-            return { ...nextState, ...action.posts };
+            // return { ...nextState, ...action.posts };
+            return action.posts
         case RECEIVE_POST:
             nextState[action.post.id] = action.post;
             return nextState
         case REMOVE_POST:
+            debugger
             delete nextState[action.postId];
             return nextState;
+            debugger
+            // return state
         default:
             return state;
     }

@@ -5,6 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import PostForm from './PostForm'
 import PostIndex from './PostIndex'
+import '../styles/Feed.css'
 
 function Feed() {
     const dispatch = useDispatch();
@@ -17,14 +18,28 @@ function Feed() {
 
     if (!sessionUser) return <Redirect to="/" />;
     return (
-        <>
-        <NavBar />
-        <PostForm />
-        <PostIndex />
-        {/* <button onClick={handleLogout}>Logout</button> */}
-        </>
-        
-    )
+        <div className='full-page'>
+        <div className="feed-container">
+        <div className='nav-bar'>
+
+          <NavBar />
+        </div>
+          <div className="center-container">
+            <div className="left-div"></div>
+            <div className="form-container">
+              <PostForm />
+            </div>
+            <div className="right-div"></div>
+          </div>
+          <div className="border"></div>
+          <div className="post-index-container">
+            <PostIndex />
+          </div>
+          {/* <button onClick={handleLogout}>Logout</button> */}
+        </div>
+        </div>
+      );
+      
 }
 
 export default Feed;
