@@ -32,7 +32,11 @@ function NavBar() {
           <div className="navbar-right">
             <div className="dropdown">
               <button className="dropdown-button" onClick={toggleDropdown}>
-                <img src={blankprofile} alt="Profile" className="profile-image" />
+              <img
+              src={sessionUser?.photoUrl || blankprofile}
+              alt="Profile"
+              className="profile-image"
+            />
               </button>
               {dropdown && (
                 <div className="dropdown-content">

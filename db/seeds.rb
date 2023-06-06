@@ -13,7 +13,9 @@ ApplicationRecord.transaction do
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
-    ApplicationRecord.connection.reset_pk_sequence!('users')
+    ActiveRecord::Base.connection.tables.each do |t|
+      ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    end
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -22,5 +24,5 @@ ApplicationRecord.transaction do
       password: 'password',
       fname: 'Demo',
       lname: 'User'
-    )
+    ).photo.attach(io: URI.open('https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Mr.bean.png?v=63782882977'), filename: 'Mr.Bean.png')
 end

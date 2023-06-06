@@ -33,8 +33,8 @@ export const createPost = (post) => async (dispatch) => {
     });
     if (res.ok) {
         const data = await res.json();
-        const post = data.post;
-        dispatch(receivePost(post))
+        // const post = data.post;
+        dispatch(receivePost(data))
     }
 };
 
@@ -42,7 +42,7 @@ export const fetchPosts = () => async (dispatch) => {
     const res = await csrfFetch('/api/posts');
     if (res.ok) {
         const data = await res.json();
-        // const posts = data.posts;
+        // const posts = data.post;
         dispatch(receivePosts(data));
     }
 };

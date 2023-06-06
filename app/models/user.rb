@@ -25,7 +25,8 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: { minimum: 6, message: "this is too short" }, allow_nil: true
    
-    has_one_attached :photo
+    has_one_attached :photo,
+        dependent: :destroy
     
     before_validation :ensure_session_token 
     
