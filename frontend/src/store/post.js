@@ -88,7 +88,8 @@ const postsReducer = (state = {}, action) => {
             delete nextState[action.postId];
             return nextState;
             debugger
-            // return state
+            return state
+
         default:
             return state;
     }
