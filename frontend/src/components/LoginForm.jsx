@@ -5,7 +5,6 @@ import { Redirect, Link } from 'react-router-dom';
 import LoginFormCss from '../styles/LoginForm.css';
 import workingpic from '../assests/workingjob.png';
 import workingpic2 from '../assests/workingjob2.png';
-import workingpic3 from '../assests/workingjob3.png';
 import logo from '../assests/LinkUpLogo.png';
 import github from '../assests/githublogo.png';
 import linkedin from '../assests/linkedInlogo.png'

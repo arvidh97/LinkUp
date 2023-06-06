@@ -1,0 +1,40 @@
+.full-page {
+    height: 100%;
+    width: 100%;
+    background-color: #e6e6e6;
+}
+.feed-container {
+    position: relative;
+  }
+  
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }
+  
+  .center-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .left-div,
+  .right-div {
+    flex: 1;
+  }
+  
+  .form-container {
+    width: 40%; /* Adjust the width as desired */
+  }
+  
+  .border {
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 16px;
+  }
+  
+  .post-index-container {
+    width: 40%; /* Adjust the width as desired */
+    margin: 0 auto;
+  }
+  

@@ -6,10 +6,6 @@ class ApplicationController < ActionController::API
     before_action :snake_case_params
     before_action :attach_authenticity_token
     skip_before_action :verify_authenticity_token
-    
-    def test
-        render json: { message: ["Hello from fails"] }
-    end
 
     def current_user 
         @current_user ||= User.find_by(session_token: session[:session_token])
