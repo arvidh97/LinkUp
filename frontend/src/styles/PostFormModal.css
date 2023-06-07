@@ -1,85 +1,164 @@
+.feed-post-form {
+  border: 2px solid grey;
+  border-radius: 25px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-weight: 600;
+}
+
+.propic-text {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-form-tools li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.post-form-tools li:hover {
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+}
+
+.post-form-tools img {
+  height: 28px;
+  width: 28px;
+  padding-right: 8px;
+}
+
+.post-form-tools p {
+  font-family: sans-serif;
+  color: gray;
+}
+
+.propic-in-form {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0.5px solid black;
+  margin-right: 15px;
+  margin-top: 9px;
+}
 .post-form-textarea {
   width: 95%;
   height: 48px;
   resize: none;
+  border: 1px solid gray;
+  border-radius: 35px;
+}
+
+.post-form-textarea:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.post-form-textarea::placeholder {
+  padding: 15px;
+  color: gray;
+  font-weight: 600;
+}
+
+.post-form-bottom {
+  padding-top: 20px;
+}
+
+.post-form-tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    max-width: 100%;
-    padding: 20px;
-  }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .modal-header-title {
-    display: flex;
-    align-items: center;
-  }
-  
-  .modal-close-button {
-    border: none;
-    background: none;
-    color: #c3c3c3;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  .modal-separator {
-    border: none;
-    border-top: 1px solid #f3f2ef;
-    margin-bottom: 20px;
-  }
-  
-  .modal h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-  
-  .modal textarea {
-    width: 100%;
-    resize: none;
-    border: none;
-    background-color: #f3f2ef;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  
-  .modal-buttons {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .modal-buttons button {
-    margin-left: 10px;
-  }
-  
-  textarea::placeholder {
-    color: #c3c3c3;
-  }
-  
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 400px;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal-header-title {
+  display: flex;
+  align-items: center;
+}
+
+.modal-close-button {
+  border: none;
+  background: none;
+  color: #c3c3c3;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-separator {
+  border: none;
+  border-top: 1px solid #f3f2ef;
+  margin-bottom: 20px;
+}
+
+.modal h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.modal textarea {
+  width: 95%;
+  height: 265px;
+  resize: none;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  min-width: fit-content;
+  min-height: fit-content;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-buttons button {
+  margin-left: 10px;
+}
+
+textarea::placeholder {
+  color: #c3c3c3;
+}
+
+.modal-textarea-container {
+  flex: 1;
+  display: flex;
+}
+
+.modal-textarea:focus {
+  outline: none;
+}

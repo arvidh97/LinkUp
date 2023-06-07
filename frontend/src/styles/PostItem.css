@@ -1,48 +1,110 @@
-/* .post-container {
-    display: flex;
-    flex-wrap: nowrap;
-    border: 1px solid whitesmoke;
-    background-color: white;
-    width: 35%
-} */
-
 .post-container {
-    display: flex;
-    align-items: center;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: white;
-  }
-  
-  .post-user-info {
-    display: flex;
-    align-items: center;
-    margin-right: 16px;
-  }
-  
-  .post-user-pic {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin-right: 8px;
-  }
-  
-  .post-user-info h2 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .post-user-info h4 {
-    font-size: 14px;
-    color: #888888;
-    margin: 0;
-  }
-  
-  .post-container h3 {
-    font-size: 16px;
-    margin: 0;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: white;
+  padding: 20px;
+}
+
+.post-user-info {
+  display: flex;
+  align-items: left;
+  margin-bottom: 8px;
+}
+
+.post-user-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.user-details h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 8px;
+}
+
+.user-details h4 {
+  font-size: 12px;
+  color: #888888;
+  margin: 0;
+}
+
+.post-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.post-content {
+  margin-bottom: 8px;
+}
+
+.post-content p {
+  padding-top: 10px;
+  font-size: 16px;
+  margin: 0;
+}
+
+.post-container .post-dropdown-container {
+  display: inline-block;
+}
+
+.post-dropdown-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.post-dropdown-content {
+  top: initial;
+  display: flex;
+  width: 175px;
+  flex-direction: column;
+  color: black;
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 8px;
+  z-index: 1;
+  position: absolute;
+}
+
+.post-dropdown-content button {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 0;
+  font-size: 14px;
+  text-align: left;
+  padding-left: 5px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+.post-dropdown-content button:hover {
+  background-color: #f5f5f5;
+}
