@@ -1,11 +1,13 @@
-.full-page {
-    height: 100%;
-    width: 100%;
-    background-color: #e6e6e6;
-}
+.full-page,
 .feed-container {
-    position: relative;
-  }
+  height: 100%;
+  background-color: #e6e6e6;
+  min-height: 100vh;
+}
+
+.feed-container {
+  position: relative;
+}
   
   .nav-bar {
     position: sticky;

@@ -9,7 +9,7 @@ import Feed from './components/Feed';
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
   return (
-    <div> 
+    <> 
       {/* {sessionUser && <h2>Welcome, {sessionUser.fname}!</h2>} */}
           <Switch>
           <Route exact path='/' component={LoginForm} />
@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/signup" component={SignUpFormPage} />
           <Route exact path='/feed' component={Feed} />
           </Switch>
-    </div>
+    </>
   );
 }
 

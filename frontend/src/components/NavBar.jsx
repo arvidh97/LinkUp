@@ -34,6 +34,11 @@ function NavBar() {
       return history.push('/feed')
     }
 
+    const handleProfileSend = (e) => {
+      e.preventDefault();
+      console.log("gotta do this bro")
+    }
+
     useEffect(() => {
       const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -91,11 +96,46 @@ function NavBar() {
               {dropdown && (
                 <div className="dropdown-content" ref={dropdownRef}>
                    <ul>
-                {sessionUser && (
-                  <li>
-                    <h2>Welcome, {sessionUser.fname}!</h2>
+                {/* {sessionUser && (
+                  <li className="drop-badge">
+                    <div className='pic-name'>
+                    <div>
+                     <img
+                        src={sessionUser?.photoUrl || blankprofile}
+                        alt="Profile"
+                        className="profile-drop"
+                        />
+                    </div>
+                    <div className="user-info">
+                      <h2 className="name-drop">{sessionUser.fname} {sessionUser.lname}</h2>
+                      <h3>{sessionUser.title}</h3>
+                    </div>
+                    </div>
+                    <div>
+                      <button className="view-profile-button" onClick={handleProfileSend}>View Profile</button>
+                    </div>
                   </li>
-                )}
+                )} */}
+             {sessionUser && (
+  <li className="drop-badge">
+    <div className="pic-name">
+      <div>
+        <img
+          src={sessionUser?.photoUrl || blankprofile}
+          alt="Profile"
+          className="profile-drop"
+        />
+      </div>
+      <div className="user-info">
+        <h2 className="name-drop">{sessionUser.fname} {sessionUser.lname}</h2>
+        <h3>{sessionUser.title}</h3>
+      </div>
+    </div>
+    <div className="profile-actions">
+      <button className="view-profile-button" onClick={handleProfileSend}>View Profile</button>
+    </div>
+  </li>
+)}
                 <li>
                   <button onClick={handleLogout}>Logout</button>
                 </li>

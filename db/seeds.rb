@@ -23,6 +23,9 @@ ApplicationRecord.transaction do
       email: 'demo@user.com', 
       password: 'password',
       fname: 'Demo',
-      lname: 'User'
+      lname: 'User',
+      title: 'Legend at University of Oxford',
+      bio: "I don't say much, but I do a lot",
+      location: "London, England"
     ).photo.attach(io: URI.open('https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Mr.bean.png?v=63782882977'), filename: 'Mr.Bean.png')
 end

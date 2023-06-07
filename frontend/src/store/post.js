@@ -43,7 +43,7 @@ export const fetchPosts = () => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         // const posts = data.post;
-        dispatch(receivePosts(data));
+        dispatch(receivePosts(data.posts));
     }
 };
 
@@ -77,8 +77,8 @@ const postsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_POSTS:
-            // return { ...nextState, ...action.posts };
-            return action.posts
+            return { ...nextState, ...action.posts };
+            // return action.posts
         case RECEIVE_POST:
             nextState[action.post.id] = action.post;
             return nextState
