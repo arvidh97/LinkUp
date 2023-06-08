@@ -3,6 +3,8 @@ import "../styles/PostItem.css";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost, updatePost } from "../store/post";
+import EditModal from "./EditPostModal";
+import Modal from "react-modal";
 
 const PostItem = ({ post }) => {
   const dispatch = useDispatch();
@@ -42,6 +44,7 @@ const PostItem = ({ post }) => {
   // Format the time difference
   const timeAgo = formatTimeAgo(seconds);
 
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -62,15 +65,24 @@ const PostItem = ({ post }) => {
     };
   }, []);
 
+  const openEditModal = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditModalOpen(false);
+  };
+
   const handleUpdate = () => {
     // Logic for updating the post
-    console.log("Update post");
+    openEditModal();
+    setIsDropdownOpen(false);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
     dispatch(deletePost(post.id));
-    console.log("Delete post");
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -105,9 +117,21 @@ const PostItem = ({ post }) => {
         )}
       </div>
       <div className="post-content">
-        <p>{post.body}</p>
+        <div className="post-text">
+          <p>{post.body}</p>
+        </div>
         {post.photoUrl && <img src={post.photoUrl} alt="Post" />}
       </div>
+      {isEditModalOpen && (
+        <Modal
+          isOpen={true}
+          onRequestClose={closeEditModal}
+          className="update-modal-inpost"
+        >
+          <h2>Edit Post</h2>
+          <EditModal post={post} closeModal={closeEditModal} />
+        </Modal>
+      )}
     </div>
   );
 };

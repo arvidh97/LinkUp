@@ -7,36 +7,49 @@
 
 .feed-container {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
-  
-  .nav-bar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-  }
-  
-  .center-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
-  
-  .left-div,
-  .right-div {
-    flex: 1;
-  }
-  
-  .form-container {
-    width: 40%; /* Adjust the width as desired */
-  }
-  
-  .border {
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 16px;
-  }
-  
-  .post-index-container {
-    width: 40%; /* Adjust the width as desired */
-    margin: 0 auto;
-  }
-  
+
+.nav-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  flex-grow: 1;
+  width: 0;
+}
+
+.left-div,
+.right-div {
+  flex: 0 0 100px;
+}
+
+.form-container {
+  width: 50%; /* Adjust the width as desired */
+}
+
+.border {
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 16px;
+}
+
+.post-index-container {
+  width: 50%; /* Adjust the width as desired */
+  margin: 0 auto;
+}
+
+.badge-propic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}

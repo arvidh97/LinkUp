@@ -1,0 +1,91 @@
+.update-modal {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: 400px;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.update-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.update-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.update-modal-header-title {
+  display: flex;
+  align-items: center;
+}
+
+.update-modal-close-button {
+  border: none;
+  background: none;
+  color: #c3c3c3;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.update-modal-separator {
+  border: none;
+  border-top: 1px solid #f3f2ef;
+  margin-bottom: 20px;
+}
+
+.update-modal h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.update-modal-textarea {
+  width: 95%;
+  height: 265px;
+  resize: none;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  min-width: fit-content;
+  min-height: fit-content;
+}
+
+.update-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.update-modal-buttons button {
+  margin-left: 10px;
+}
+
+.update-modal-textarea::placeholder {
+  color: #c3c3c3;
+}
+
+.update-modal-textarea-container {
+  flex: 1;
+  display: flex;
+}
+
+.update-modal-textarea:focus {
+  outline: none;
+}

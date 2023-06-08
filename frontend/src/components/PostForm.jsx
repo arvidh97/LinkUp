@@ -94,7 +94,9 @@ const CreatePostForm = () => {
             />
           </div>
           <div className="modal-buttons">
-            <button type="submit">Post</button>
+            <button type="submit" className="post-modal-buttons">
+              Post
+            </button>
           </div>
         </form>
       </Modal>
