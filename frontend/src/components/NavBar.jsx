@@ -10,6 +10,7 @@ import magGlass from "../assests/magGlass.png";
 import homeIcon from "../assests/homeIcon.png";
 import connectionsIcon from "../assests/connectionsIcon.png";
 import jobsIcon from "../assests/jobsIcon.png";
+import { fetchUser } from "../store/user";
 
 function NavBar() {
   const dispatch = useDispatch();
@@ -36,7 +37,9 @@ function NavBar() {
 
   const handleProfileSend = (e) => {
     e.preventDefault();
-    console.log("gotta do this bro");
+    dispatch(fetchUser(`${sessionUser.id}`));
+    const profileUrl = `/users/${sessionUser.id}`;
+    history.push(profileUrl);
   };
 
   useEffect(() => {

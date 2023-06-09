@@ -6,6 +6,8 @@ import NavBar from "./NavBar";
 import PostForm from "./PostForm";
 import PostIndex from "./PostIndex";
 import "../styles/Feed.css";
+import arvid from "../assests/arvid-pic.jpeg";
+import blankprofile from "../assests/blankProfilePic.png";
 
 function Feed() {
   const dispatch = useDispatch();
@@ -14,6 +16,12 @@ function Feed() {
   const handleLogout = (e) => {
     e.preventDefault();
     return dispatch(sessionActions.logout());
+  };
+
+  const handleProfileSend = (e) => {
+    e.preventDefault();
+    const profileUrl = `/users/${sessionUser.id}`;
+    history.push(profileUrl);
   };
 
   if (!sessionUser) return <Redirect to="/" />;
@@ -27,7 +35,20 @@ function Feed() {
           <div className="feed-profile-badge">
             <div className="feed-profile-badge-cover"></div>
             <div className="feed-profile-badge-propic">
-              <img src={sessionUser.photoUrl} className="badge-propic" />
+              <img
+                src={sessionUser.photoUrl || blankprofile}
+                className="badge-propic"
+                onClick={handleProfileSend}
+              />
+            </div>
+            <div className="feed-profile-user-info">
+              <h2>
+                {sessionUser.fname} {sessionUser.lname}
+              </h2>
+              <h3>
+                {sessionUser.title ||
+                  "Go to your profile and let the world know your title!"}
+              </h3>
             </div>
           </div>
         </div>
@@ -40,7 +61,25 @@ function Feed() {
             <PostIndex />
           </div>
         </div>
-        <div className="right-div"></div>
+        <div className="right-div">
+          <div className="about-the-dev">
+            <div className="about-the-dev-header">
+              <h2>About The Developer</h2>
+              <hr></hr>
+            </div>
+            <div className="about-the-dev-content">
+              <img src={arvid} alt="Handsome Beast" className="dev-pic" />
+              <p>
+                <span className="my-name">Arvid Hossain</span>, born and bred
+                from NYC, is an all guns blazing kind of coder. Putting his
+                heart, brain, and tears, he would humbly like to welcome you to
+                his very own LinkedIn Clone. Please check his GitHub and
+                LinkedIn links below, and enjoy{" "}
+              </p>
+            </div>
+          </div>
+          <div className="dev-links"></div>
+        </div>
       </div>
     </div>
   );

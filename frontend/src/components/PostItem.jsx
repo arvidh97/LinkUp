@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletePost, updatePost } from "../store/post";
 import EditModal from "./EditPostModal";
 import Modal from "react-modal";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { fetchUser } from "../store/user";
 
 const PostItem = ({ post }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const dropdownRef = useRef(null);
 
   const currentUser = useSelector((state) => state.session.user);
@@ -85,6 +88,13 @@ const PostItem = ({ post }) => {
     setIsDropdownOpen(false);
   };
 
+  const handleProfileSend = (e) => {
+    e.preventDefault();
+    dispatch(fetchUser(`/api/users/${post.author.id}`));
+    const profileUrl = `/users/${post.author.id}`;
+    history.push(profileUrl);
+  };
+
   return (
     <div className="post-container">
       <div className="post-top">
@@ -93,9 +103,10 @@ const PostItem = ({ post }) => {
             src={post.author.photoUrl || blankpropic}
             className="post-user-pic"
             alt="User"
+            onClick={handleProfileSend}
           />
           <div className="user-details">
-            <h2>
+            <h2 onClick={handleProfileSend}>
               {capitalizedFName} {capitalizedLName}
             </h2>
             <h3>{post.author.title}</h3>

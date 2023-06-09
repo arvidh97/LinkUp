@@ -23,7 +23,7 @@ class User < ApplicationRecord
     validates :lname, presence: {message: "Please enter last name"}
     validates :session_token, presence: true, uniqueness: true 
     validates :password_digest, presence: true
-    validates :password, length: { minimum: 6, message: "this is too short" }, allow_nil: true
+    validates :password, length: { minimum: 6, message: "is too short" }, allow_nil: true
    
     has_one_attached :photo,
         dependent: :destroy
@@ -63,5 +63,4 @@ class User < ApplicationRecord
             return token unless User.exists?(session_token: token)
         end
     end
-
 end

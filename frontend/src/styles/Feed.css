@@ -1,8 +1,8 @@
-.full-page,
 .feed-container {
   height: 100%;
   background-color: #e6e6e6;
   min-height: 100vh;
+  padding: 0 0px;
 }
 
 .feed-container {
@@ -27,15 +27,19 @@
   margin-top: 15px;
   flex-grow: 1;
   width: 0;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .left-div,
 .right-div {
   flex: 0 0 100px;
+  margin: 0;
+  position: fixed;
 }
 
 .form-container {
-  width: 50%; /* Adjust the width as desired */
+  width: 45%; /* Adjust the width as desired */
 }
 
 .border {
@@ -44,7 +48,7 @@
 }
 
 .post-index-container {
-  width: 50%; /* Adjust the width as desired */
+  width: 45%; /* Adjust the width as desired */
   margin: 0 auto;
 }
 
@@ -52,4 +56,106 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
+  border: 1px solid rgb(73, 105, 249);
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.feed-profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  margin-top: 16px;
+  width: 120px;
+
+  border: 1px solid grey;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.left-div {
+  left: 13%;
+}
+
+.feed-profile-badge-cover {
+}
+
+.feed-profile-user-info h2 {
+  margin: 0;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.feed-profile-user-info h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 8px;
+}
+
+.right-div {
+  right: 11%;
+}
+
+.about-the-dev {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  margin-top: 16px;
+  width: 150px;
+
+  border: 1px solid grey;
+  border-radius: 25px;
+  background-color: white;
+}
+
+hr {
+  position: relative;
+  right: 6px;
+  width: 180px;
+}
+
+.about-the-dev-header {
+  margin: 0;
+  position: relative;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #000000;
+  font-weight: bold;
+  text-align: left;
+  padding: 0;
+  right: 12px;
+  bottom: 12px;
+  width: 145px;
+}
+
+.about-the-dev-content {
+  padding: 1px;
+  position: relative;
+  bottom: 16px;
+}
+
+.dev-pic {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgb(73, 105, 249);
+  margin-bottom: 15px;
+}
+
+.about-the-dev-content p {
+  text-align: left;
+}
+
+.my-name {
+  font-weight: bold !important;
+  font-size: larger;
 }
