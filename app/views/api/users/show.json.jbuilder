@@ -3,5 +3,9 @@ json.user do
     if @user.photo.attached?
         json.photoUrl url_for(@user.photo)
     end
+    if @user.cover_photo.attached?
+        json.coverUrl url_for(@user.cover_photo)
+    end
     json.photoUrl @user.photo.attached? ? @user.photo.url : nil
+    json.coverUrl @user.cover_photo.attached? ? @user.cover_photo.url : nil
 end

@@ -27,6 +27,9 @@ class User < ApplicationRecord
    
     has_one_attached :photo,
         dependent: :destroy
+
+    has_one_attached :cover_photo, 
+        dependent: :destroy
     
     before_validation :ensure_session_token 
     

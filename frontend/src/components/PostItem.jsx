@@ -88,9 +88,9 @@ const PostItem = ({ post }) => {
     setIsDropdownOpen(false);
   };
 
-  const handleProfileSend = (e) => {
+  const handleProfileSend = async (e) => {
     e.preventDefault();
-    dispatch(fetchUser(`/api/users/${post.author.id}`));
+    await dispatch(fetchUser(post.author.id));
     const profileUrl = `/users/${post.author.id}`;
     history.push(profileUrl);
   };

@@ -30,15 +30,18 @@ ApplicationRecord.transaction do
     ).photo.attach(io: URI.open('https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Mr.bean.png?v=63782882977'), filename: 'Mr.Bean.png')
 
     User.create!(
-      email: 'john@example.com',
-      password: 'password',
-      fname: 'Harry',
-      lname: 'Potter',
-      title: 'The Boy Who Lived',
-      bio: 'Wizarding world hero',
-      location: 'Hogwarts'
-    ).photo.attach(io: URI.open('https://m.media-amazon.com/images/I/51sB-l8ammL.jpg'), filename: 'harry_potter.png')
-  
+  email: 'john@example.com',
+  password: 'password',
+  fname: 'Harry',
+  lname: 'Potter',
+  title: 'The Boy Who Lived',
+  bio: 'Wizarding world hero',
+  location: 'Hogwarts'
+).tap do |user|
+  user.photo.attach(io: URI.open('https://m.media-amazon.com/images/I/51sB-l8ammL.jpg'), filename: 'harry_potter.png')
+  user.cover_photo.attach(io: URI.open('https://booksrockmyworlddotcom.files.wordpress.com/2017/02/russian-black-spines11.jpg?w=1312&h=600&crop=1'), filename: 'harry_cover.jpg')
+end
+
     User.create!(
       email: 'jane@example.com',
       password: 'password',

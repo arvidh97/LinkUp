@@ -31,13 +31,13 @@ function NavBar() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    window.location.reload();
+    // window.location.reload();
     return history.push("/feed");
   };
 
-  const handleProfileSend = (e) => {
+  const handleProfileSend = async (e) => {
     e.preventDefault();
-    dispatch(fetchUser(`${sessionUser.id}`));
+    await dispatch(fetchUser(`${sessionUser.id}`));
     const profileUrl = `/users/${sessionUser.id}`;
     history.push(profileUrl);
   };
