@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import LoginForm from "./components/LoginForm";
 import SignUpFormPage from "./components/SignUpForm";
 import LoginFormPage from "./components/LoginFormPage";
@@ -11,7 +12,7 @@ function App() {
   const sessionUser = useSelector((state) => state.session.user);
   return (
     <>
-      {/* {sessionUser && <h2>Welcome, {sessionUser.fname}!</h2>} */}
+      {!sessionUser && <Redirect to="/" />}
       <Switch>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/login" component={LoginFormPage} />
