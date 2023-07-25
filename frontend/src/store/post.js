@@ -3,6 +3,8 @@ import { csrfFetch } from "./csrf.js";
 export const RECEIVE_POST = "posts/RECEIVE_POST";
 export const RECEIVE_POSTS = "posts/RECEIVE_POSTS";
 export const REMOVE_POST = "posts/REMOVE_POST";
+export const LIKE_POST = "posts/LIKE_POST";
+export const UNLIKE_POST = "post/UNLIKE_POST";
 
 export const receivePost = (post) => {
   return {
@@ -19,6 +21,18 @@ export const receivePosts = (posts) => {
 export const removePost = (postId) => {
   return {
     type: REMOVE_POST,
+    postId,
+  };
+};
+export const likePost = (postId, like) => {
+  return {
+    type: LIKE_POST,
+    postId,
+  };
+};
+export const unlikePost = (postId) => {
+  return {
+    type: UNLIKE_POST,
     postId,
   };
 };
@@ -67,8 +81,21 @@ export const updatePost = (post) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     dispatch(receivePost(data));
+  }
+};
+
+export const createLike = (postId, likerId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/posts/${postId}/likes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ liker_id: likerId }),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(likePost(postId, data));
   }
 };
 
@@ -84,6 +111,13 @@ const postsReducer = (state = {}, action) => {
       return nextState;
     case REMOVE_POST:
       delete nextState[action.postId];
+      return nextState;
+    case LIKE_POST:
+      const { postId, like } = action;
+      if (nextState[postId]) {
+        nextState[postId].likes = nextState[postId].likes || {};
+        // nextState[postId].likes[like.id] = like;
+      }
       return nextState;
     default:
       return state;
