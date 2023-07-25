@@ -15,5 +15,10 @@ class Post < ApplicationRecord
         foreign_key: :author_id,
         class_name: :User
 
+    has_many :likes,
+        foreign_key: :post_id,
+        class_name: :Like,
+        dependent: :destroy
+
     has_one_attached :photo
 end

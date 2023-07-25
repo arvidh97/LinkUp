@@ -17,6 +17,9 @@ json.posts do
                 json.title post.author.title
                 json.photoUrl post.author.photo.attached? ? post.author.photo.url : nil
             end
+            json.likes post.likes do |like|
+                json.extract! like, :id, :liker_id, :created_at, :updated_at
+            end
         end
     end
 end
