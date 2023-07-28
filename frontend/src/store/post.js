@@ -100,6 +100,15 @@ export const createLike = (postId, likerId) => async (dispatch) => {
   }
 };
 
+export const deleteLike = (postId, likeId) => async (dispatch) => {
+  const res = await csrfFetch(`api/posts/${postId}/likes/${likeId}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(unlikePost(postId));
+  }
+};
+
 const postsReducer = (state = {}, action) => {
   const nextState = { ...state };
 
@@ -118,6 +127,11 @@ const postsReducer = (state = {}, action) => {
       if (nextState[postId]) {
         nextState[postId].likes = nextState[postId].likes || {};
         nextState[postId].likes[like.id] = like;
+      }
+      return nextState;
+    case UNLIKE_POST:
+      if (nextState[action.postId] && nextState[action.postId].likes) {
+        delete nextState[action.postId].likes[action.likeId];
       }
       return nextState;
     default:

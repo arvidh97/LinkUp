@@ -2,13 +2,18 @@ import blankpropic from "../assests/blankProfilePic.png";
 import "../styles/PostItem.css";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost, updatePost } from "../store/post";
+import { deletePost, updatePost, createLike, deleteLike } from "../store/post";
 import EditModal from "./EditPostModal";
 import LikersModal from "./LikersModal";
 import Modal from "react-modal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUser } from "../store/user";
 import bluelike from "../assests/blue-like.png";
+import likebutton from "../assests/like.png";
+import unlikebutton from "../assests/unlike.png";
+import commentbutton from "../assests/comment.png";
+import repost from "../assests/repeat.png";
+import send from "../assests/send.png";
 
 const PostItem = ({ post }) => {
   const dispatch = useDispatch();
@@ -87,6 +92,22 @@ const PostItem = ({ post }) => {
     setIsLikeModalOpen(false);
   };
 
+  const handleLikeButton = async (e) => {
+    e.preventDefault();
+    await dispatch(createLike(post.id, currentUser.id));
+    dispatch(updatePost(post));
+  };
+
+  const handleUnlikeButton = async (e) => {
+    e.preventDefault();
+    const likedByCurrentUser = hasLikedPost(post.likes);
+    if (likedByCurrentUser) {
+      const likeId = likedByCurrentUser.id;
+      await dispatch(deleteLike(post.id, likeId));
+    }
+    dispatch(updatePost(post));
+  };
+
   const handleUpdate = () => {
     // Logic for updating the post
     openEditModal();
@@ -117,6 +138,14 @@ const PostItem = ({ post }) => {
         <h3> {count} </h3>
       </div>
     );
+  }
+
+  function hasLikedPost(likes) {
+    if (!likes) return false;
+    const likedByCurrentUser = Object.values(likes).some(
+      (like) => like.likerId === currentUser.id
+    );
+    return likedByCurrentUser;
   }
 
   return (
@@ -162,6 +191,29 @@ const PostItem = ({ post }) => {
           {post.likes ? likeCount(post.likes) : <div></div>}
         </div>
         <hr />
+        <div className="post-buttons">
+          {hasLikedPost(post.likes) ? (
+            <button
+              onClick={handleUnlikeButton}
+              className="action-unlike-button"
+            >
+              <img src={unlikebutton} alt="likedicon" /> <h2>Like</h2>
+            </button>
+          ) : (
+            <button onClick={handleLikeButton} className="action-like-button">
+              <img src={likebutton} alt="likeicon" /> <h2>Like</h2>
+            </button>
+          )}
+          <button className="action-comment-button">
+            <img src={commentbutton} alt="commenticon" /> <h2>Comment</h2>
+          </button>
+          <button className="action-repost-button">
+            <img src={repost} alt="reposticon" /> <h2>Repost</h2>
+          </button>
+          <button className="action-comment-button">
+            <img src={send} alt="sendicon" /> <h2>Send</h2>
+          </button>
+        </div>
       </div>
       {isEditModalOpen && (
         <Modal

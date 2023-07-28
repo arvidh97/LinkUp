@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUser } from "../store/user";
