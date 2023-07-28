@@ -43,6 +43,7 @@
   border: 0.5px solid black;
   margin-right: 15px;
   margin-top: 9px;
+  cursor: pointer;
 }
 .post-form-textarea {
   width: 95%;

@@ -42,7 +42,7 @@ function Feed() {
               />
             </div>
             <div className="feed-profile-user-info">
-              <h2>
+              <h2 className="session-user-name" onClick={handleProfileSend}>
                 {sessionUser.fname} {sessionUser.lname}
               </h2>
               <h3>

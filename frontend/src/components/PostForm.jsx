@@ -1,6 +1,7 @@
 import "../styles/PostFormModal.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { createPost } from "../store/post";
 import blankprofile from "../assests/blankProfilePic.png";
 import Modal from "react-modal";
@@ -11,6 +12,7 @@ import articleIcon from "../assests/articleIcon.png";
 
 const CreatePostForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [body, setBody] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -30,6 +32,13 @@ const CreatePostForm = () => {
     closeModal();
   };
 
+  const handleProfileSend = async (e) => {
+    e.preventDefault();
+    // await dispatch(fetchUser(post.author.id));
+    const profileUrl = `/users/${sessionUser.id}`;
+    history.push(profileUrl);
+  };
+
   return (
     <div>
       <div className="feed-post-form">
@@ -38,6 +47,7 @@ const CreatePostForm = () => {
             src={sessionUser?.photoUrl || blankprofile}
             alt="Profile"
             className="propic-in-form"
+            onClick={handleProfileSend}
           />
           <textarea
             onClick={openModal}

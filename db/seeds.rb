@@ -27,7 +27,7 @@ ApplicationRecord.transaction do
       title: 'Legend at University of Oxford',
       bio: "I don't say much, but I do a lot",
       location: "London, England"
-    ).photo.attach(io: URI.open('https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Mr.bean.png?v=63782882977'), filename: 'Mr.Bean.png')
+    ).photo.attach(io: URI.open('https://linkup-clone-seed.s3.amazonaws.com/Mr.bean.png'), filename: 'Mr.Bean.png')
 
     User.create!(
   email: 'john@example.com',

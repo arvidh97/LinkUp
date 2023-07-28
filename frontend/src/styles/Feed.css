@@ -61,6 +61,11 @@
   cursor: pointer;
 }
 
+.session-user-name:hover {
+  cursor: pointer;
+  text-decoration: underline purple;
+}
+
 .feed-profile-badge {
   display: flex;
   flex-direction: column;
