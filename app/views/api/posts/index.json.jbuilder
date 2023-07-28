@@ -24,6 +24,13 @@ json.posts do
                 post.likes.each do |like|
                   json.set! like.id.to_s do
                     json.extract! like, :id, :liker_id, :created_at, :updated_at
+                    json.liker do
+                        json.id like.liker.id
+                        json.fName like.liker.fname
+                        json.lName like.liker.lname
+                        json.title like.liker.title
+                        json.photoUrl like.liker.photo.attached? ? like.liker.photo.url : nil
+                      end
                   end
                 end
               end

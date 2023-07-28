@@ -4,9 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost, updatePost } from "../store/post";
 import EditModal from "./EditPostModal";
+import LikersModal from "./LikersModal";
 import Modal from "react-modal";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUser } from "../store/user";
+import bluelike from "../assests/blue-like.png";
 
 const PostItem = ({ post }) => {
   const dispatch = useDispatch();
@@ -49,6 +51,7 @@ const PostItem = ({ post }) => {
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLikeModalOpen, setIsLikeModalOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -76,6 +79,14 @@ const PostItem = ({ post }) => {
     setIsEditModalOpen(false);
   };
 
+  const openLikeModal = () => {
+    setIsLikeModalOpen(true);
+  };
+
+  const closeLikeModal = () => {
+    setIsLikeModalOpen(false);
+  };
+
   const handleUpdate = () => {
     // Logic for updating the post
     openEditModal();
@@ -94,6 +105,19 @@ const PostItem = ({ post }) => {
     const profileUrl = `/users/${post.author.id}`;
     history.push(profileUrl);
   };
+
+  function likeCount(likes) {
+    const count = Object.keys(likes).length;
+    if (count === 0) {
+      return null;
+    }
+    return (
+      <div className="like-counts" onClick={openLikeModal}>
+        <img className="blue-like-icon" src={bluelike} alt="bluelike" />
+        <h3> {count} </h3>
+      </div>
+    );
+  }
 
   return (
     <div className="post-container">
@@ -133,6 +157,12 @@ const PostItem = ({ post }) => {
         </div>
         {post.photoUrl && <img src={post.photoUrl} alt="Post" />}
       </div>
+      <div className="like-comment-section">
+        <div className="like-comment-counter">
+          {post.likes ? likeCount(post.likes) : <div></div>}
+        </div>
+        <hr />
+      </div>
       {isEditModalOpen && (
         <Modal
           isOpen={true}
@@ -141,6 +171,15 @@ const PostItem = ({ post }) => {
         >
           <h2>Edit Post</h2>
           <EditModal post={post} closeModal={closeEditModal} />
+        </Modal>
+      )}
+      {isLikeModalOpen && (
+        <Modal
+          isOpen={true}
+          onRequestClose={closeLikeModal}
+          className="likers-modal-inpost"
+        >
+          <LikersModal likes={post.likes} closeModal={closeLikeModal} />
         </Modal>
       )}
     </div>

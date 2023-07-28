@@ -28,6 +28,7 @@ export const likePost = (postId, like) => {
   return {
     type: LIKE_POST,
     postId,
+    like,
   };
 };
 export const unlikePost = (postId) => {
@@ -116,7 +117,7 @@ const postsReducer = (state = {}, action) => {
       const { postId, like } = action;
       if (nextState[postId]) {
         nextState[postId].likes = nextState[postId].likes || {};
-        // nextState[postId].likes[like.id] = like;
+        nextState[postId].likes[like.id] = like;
       }
       return nextState;
     default:

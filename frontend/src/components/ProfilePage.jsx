@@ -32,7 +32,9 @@ function ProfilePage() {
 
   return (
     <>
-      <NavBar />
+      <div className="nav-bar">
+        <NavBar />
+      </div>
       <div className="profile-page">
         <header className="profile-header">
           <img

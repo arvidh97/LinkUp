@@ -69,6 +69,12 @@
   margin: 0;
 }
 
+.like-comment-section hr {
+  width: 95%;
+  margin: 1px auto;
+  border: 1px solid #e3e3e3;
+}
+
 .post-container .post-dropdown-container {
   display: inline-block;
 }
@@ -118,4 +124,32 @@
 
 .post-text {
   white-space: pre-line;
+}
+
+.like-counts {
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  width: 5%;
+}
+
+.blue-like-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.like-counts h3 {
+  margin-left: 5px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.like-counts h3:hover {
+  color: blue;
+  text-decoration: underline;
+  font-weight: 265;
 }
