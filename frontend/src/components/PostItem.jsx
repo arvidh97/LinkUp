@@ -2,7 +2,13 @@ import blankpropic from "../assests/blankProfilePic.png";
 import "../styles/PostItem.css";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost, updatePost, createLike, deleteLike } from "../store/post";
+import {
+  deletePost,
+  updatePost,
+  createLike,
+  deleteLike,
+  createComment,
+} from "../store/post";
 import EditModal from "./EditPostModal";
 import LikersModal from "./LikersModal";
 import Modal from "react-modal";
@@ -57,6 +63,8 @@ const PostItem = ({ post }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLikeModalOpen, setIsLikeModalOpen] = useState(false);
+  const [isCommentShown, setIsCommentShown] = useState(false);
+  const [commentBody, setCommentBody] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -127,6 +135,22 @@ const PostItem = ({ post }) => {
     history.push(profileUrl);
   };
 
+  const handleCommentProfileSend = async (authorId) => {
+    await dispatch(fetchUser(authorId));
+    history.push(`/users/${authorId}`);
+  };
+
+  const toggleCommentForm = () => {
+    setIsCommentShown(true);
+  };
+
+  const handleSubmitComment = async (e) => {
+    e.preventDefault();
+    await dispatch(createComment(post.id, commentBody));
+    dispatch(updatePost(post));
+    setCommentBody("");
+  };
+
   function likeCount(likes) {
     const count = Object.keys(likes).length;
     if (count === 0) {
@@ -146,6 +170,19 @@ const PostItem = ({ post }) => {
       (like) => like.likerId === currentUser.id
     );
     return likedByCurrentUser;
+  }
+
+  function renderComments() {
+    if (!post.comments) return null;
+
+    const length = Object.keys(post.comments).length;
+    const commentAmount = length === 1 ? "comment" : "comments";
+
+    return (
+      <div className="comment-counts" onClick={toggleCommentForm}>
+        {length} {commentAmount}
+      </div>
+    );
   }
 
   return (
@@ -189,6 +226,7 @@ const PostItem = ({ post }) => {
       <div className="like-comment-section">
         <div className="like-comment-counter">
           {post.likes ? likeCount(post.likes) : <div></div>}
+          {post.comments ? renderComments() : <div></div>}
         </div>
         <hr />
         <div className="post-buttons">
@@ -204,7 +242,7 @@ const PostItem = ({ post }) => {
               <img src={likebutton} alt="likeicon" /> <h2>Like</h2>
             </button>
           )}
-          <button className="action-comment-button">
+          <button onClick={toggleCommentForm} className="action-comment-button">
             <img src={commentbutton} alt="commenticon" /> <h2>Comment</h2>
           </button>
           <button className="action-repost-button">
@@ -214,6 +252,45 @@ const PostItem = ({ post }) => {
             <img src={send} alt="sendicon" /> <h2>Send</h2>
           </button>
         </div>
+        {isCommentShown && (
+          <>
+            <form onSubmit={handleSubmitComment} className="comment-form">
+              <div className="pro-comment-form">
+                <img
+                  src={currentUser.photoUrl || blankpropic}
+                  className="comment-pro-pic"
+                />
+                <textarea
+                  rows="3"
+                  value={commentBody}
+                  onChange={(e) => setCommentBody(e.target.value)}
+                  placeholder="Add a comment..."
+                  required
+                />
+              </div>
+              {commentBody !== "" ? <button type="submit">Post</button> : null}
+            </form>
+            <div className="comments-container">
+              {Object.values(post.comments).map((comment) => (
+                <div key={comment.id} className="comment-item">
+                  <img
+                    src={comment.author.photoUrl || blankpropic}
+                    className="comment-user-pic"
+                    alt="User"
+                    onClick={() => handleCommentProfileSend(comment.author.id)}
+                  />
+                  <div className="comment-details">
+                    <h2>
+                      {comment.author.fName} {comment.author.lName}
+                    </h2>
+                    <h3>{comment.author.title}</h3>
+                    <p>{comment.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
       {isEditModalOpen && (
         <Modal
