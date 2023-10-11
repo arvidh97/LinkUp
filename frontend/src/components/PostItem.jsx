@@ -8,6 +8,7 @@ import {
   createLike,
   deleteLike,
   createComment,
+  deleteComment,
 } from "../store/post";
 import EditModal from "./EditPostModal";
 import LikersModal from "./LikersModal";
@@ -280,7 +281,11 @@ const PostItem = ({ post }) => {
                     onClick={() => handleCommentProfileSend(comment.author.id)}
                   />
                   <div className="comment-details">
-                    <h2>
+                    <h2
+                      onClick={() =>
+                        handleCommentProfileSend(comment.author.id)
+                      }
+                    >
                       {comment.author.fName} {comment.author.lName}
                     </h2>
                     <h3>{comment.author.title}</h3>

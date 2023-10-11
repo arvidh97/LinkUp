@@ -218,23 +218,45 @@
   flex: 1;
   background-color: #f3f2f5;
   padding: 10px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .comment-details h2 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 2px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.comment-details h2:hover {
+  color: rgb(44, 44, 222);
+  text-decoration: underline;
 }
 
 .comment-details h3 {
-  font-size: 12px;
+  font-size: 14px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #707070;
   margin-bottom: 5px;
 }
 
 .comment-details p {
-  font-size: 14px;
+  font-size: 16px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
   margin-bottom: 0;
+  padding-top: 10px;
 }
 
 /* Styles for the comment form */
@@ -281,4 +303,27 @@
 
 .comment-form button:hover {
   background-color: #004182;
+}
+
+.like-comment-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-counts {
+  margin-right: 15px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: 175;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.comment-counts:hover {
+  color: blue;
+  text-decoration: underline;
+  font-weight: 265;
 }
