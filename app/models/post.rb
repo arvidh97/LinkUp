@@ -20,5 +20,10 @@ class Post < ApplicationRecord
         class_name: :Like,
         dependent: :destroy
 
+    has_many :comments,
+        foreign_key: :post_id,
+        class_name: :Comment,
+        dependent: :destroy
+
     has_one_attached :photo
 end

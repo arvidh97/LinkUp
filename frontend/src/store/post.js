@@ -5,6 +5,9 @@ export const RECEIVE_POSTS = "posts/RECEIVE_POSTS";
 export const REMOVE_POST = "posts/REMOVE_POST";
 export const LIKE_POST = "posts/LIKE_POST";
 export const UNLIKE_POST = "post/UNLIKE_POST";
+export const RECEIVE_COMMENT = "posts/RECEIVE_COMMENT";
+export const REMOVE_COMMENT = "posts/REMOVE_COMMENT";
+export const UPDATE_COMMENT = "posts/UPDATE_COMMENT";
 
 export const receivePost = (post) => {
   return {
@@ -37,6 +40,30 @@ export const unlikePost = (postId) => {
     postId,
   };
 };
+
+export const receiveComment = (postId, comment) => {
+  return {
+    type: RECEIVE_COMMENT,
+    postId,
+    comment,
+  };
+};
+
+export const removeComment = (postId, comment) => {
+  return {
+    type: REMOVE_COMMENT,
+    postId,
+    comment,
+  };
+};
+
+// export const updateComment = (postId, comment) => {
+//   return {
+//     type: UPDATE_COMMENT,
+//     postId,
+//     comment,
+//   };
+// };
 
 export const createPost = (post) => async (dispatch) => {
   const res = await csrfFetch("/api/posts", {
@@ -109,6 +136,42 @@ export const deleteLike = (postId, likeId) => async (dispatch) => {
   }
 };
 
+export const createComment = (postId, body) => async (dispatch) => {
+  const res = await csrfFetch(`/api/posts/${postId}/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ body }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(receiveComment(postId, data));
+  }
+};
+
+export const deleteComment = (postId, commentId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/posts/${postId}/comments/${commentId}`, {
+    method: "DELETE",
+  });
+
+  const data = await res.json();
+  dispatch(removeComment(postId, data));
+};
+
+export const editComment = (postId, commentId, body) => async (dispatch) => {
+  const res = await csrfFetch(`/api/posts/${postId}/comments/${commentId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ body }),
+  });
+  const data = await res.json();
+  dispatch(receiveComment(postId, data));
+};
+
 const postsReducer = (state = {}, action) => {
   const nextState = { ...state };
 
@@ -132,6 +195,18 @@ const postsReducer = (state = {}, action) => {
     case UNLIKE_POST:
       if (nextState[action.postId] && nextState[action.postId].likes) {
         delete nextState[action.postId].likes[action.likeId];
+      }
+      return nextState;
+    case RECEIVE_COMMENT:
+      if (nextState[action.postId]) {
+        nextState[action.postId].comments =
+          nextState[action.postId].comments || {};
+        nextState[action.postId].comments[action.comment.id] = action.comment;
+      }
+      return nextState;
+    case REMOVE_COMMENT:
+      if (nextState[action.postId] && nextState[action.postId].comments) {
+        delete nextState[action.postId].comments[action.comment.id];
       }
       return nextState;
     default:
