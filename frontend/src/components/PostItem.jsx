@@ -271,29 +271,33 @@ const PostItem = ({ post }) => {
               </div>
               {commentBody !== "" ? <button type="submit">Post</button> : null}
             </form>
-            <div className="comments-container">
-              {Object.values(post.comments).map((comment) => (
-                <div key={comment.id} className="comment-item">
-                  <img
-                    src={comment.author.photoUrl || blankpropic}
-                    className="comment-user-pic"
-                    alt="User"
-                    onClick={() => handleCommentProfileSend(comment.author.id)}
-                  />
-                  <div className="comment-details">
-                    <h2
+            {post.comments && (
+              <div className="comments-container">
+                {Object.values(post.comments).map((comment) => (
+                  <div key={comment.id} className="comment-item">
+                    <img
+                      src={comment.author.photoUrl || blankpropic}
+                      className="comment-user-pic"
+                      alt="User"
                       onClick={() =>
                         handleCommentProfileSend(comment.author.id)
                       }
-                    >
-                      {comment.author.fName} {comment.author.lName}
-                    </h2>
-                    <h3>{comment.author.title}</h3>
-                    <p>{comment.body}</p>
+                    />
+                    <div className="comment-details">
+                      <h2
+                        onClick={() =>
+                          handleCommentProfileSend(comment.author.id)
+                        }
+                      >
+                        {comment.author.fName} {comment.author.lName}
+                      </h2>
+                      <h3>{comment.author.title}</h3>
+                      <p>{comment.body}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </>
         )}
       </div>
