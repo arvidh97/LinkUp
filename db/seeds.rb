@@ -27,7 +27,8 @@ ApplicationRecord.transaction do
       title: 'Legend at University of Oxford',
       bio: "I don't say much, but I do a lot",
       location: "London, England"
-    ).photo.attach(io: URI.open('https://linkup-clone-seed.s3.amazonaws.com/Mr.bean.png'), filename: 'Mr.Bean.png')
+    ).photo.attach(io: File.open(Rails.root.join('app','assets','images','Mr.bean.png')), filename: 'Mr.bean.png')
+
 
     User.create!(
   email: 'john@example.com',
