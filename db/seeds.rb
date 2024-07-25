@@ -40,7 +40,7 @@ ApplicationRecord.transaction do
   location: 'Hogwarts'
 ).tap do |user|
   user.photo.attach(io: URI.open('https://m.media-amazon.com/images/I/51sB-l8ammL.jpg'), filename: 'harry_potter.png')
-  user.cover_photo.attach(io: URI.open('https://booksrockmyworlddotcom.files.wordpress.com/2017/02/russian-black-spines11.jpg?w=1312&h=600&crop=1'), filename: 'harry_cover.jpg')
+  user.cover_photo.attach(io: URI.open('https://wordsandlyricss.wordpress.com/wp-content/uploads/2015/09/harry-potter-14.jpg'), filename: 'harry_cover.jpg')
 end
 
     User.create!(
